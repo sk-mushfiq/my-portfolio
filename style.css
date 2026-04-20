@@ -8,6 +8,11 @@
     list-style: none;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
 header {
     position: fixed;
     top: 1rem;
@@ -25,7 +30,7 @@ header {
     z-index: 1000;
 }
 
-.logo {
+header .logo {
     color: white;
     font-size: 1.3rem;
     font-weight: 600;
@@ -33,21 +38,21 @@ header {
     transition: 0.3s ease-in-out;
 }
 
-.logo:hover {
+header .logo:hover {
     transform: scale(1.1);
 }
 
-.navLinks {
+header .navLinks {
     display: flex;
     gap: 2rem;
 }
 
-li a {
+header ul li a {
     position: relative;
     color: white;
 }
 
-li a::before {
+header ul li a::before {
     position: absolute;
     content: "";
     width: 0;
@@ -59,15 +64,20 @@ li a::before {
     background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
 }
 
-li a:hover::before {
+header ul li a:hover::before {
     width: 100%;
 }
 
-.visitButton {
-    padding: 0.8rem 1.5rem;
+header #menuIcon {
+    font-size: 2rem;
+    display: none;
+}
+
+header .visitButton {
+    padding: 0.6rem 1.2rem;
     border-radius: 3rem;
     border: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: white;
     cursor: pointer;
     text-wrap: nowrap;
@@ -75,21 +85,16 @@ li a:hover::before {
     background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
 }
 
-.visitButton:hover {
+header .visitButton:hover {
     background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
     transform: scale(1.03);
-}
-
-#menuIcon {
-    font-size: 2rem;
-    display: none;
 }
 
 section {
     min-height: 100vh;
     padding: 8rem 12%;
     width: 100%;
-    position: relative;
+    /* position: relative; */
 }
 
 .about {
@@ -269,12 +274,11 @@ section {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 18rem 0;
+    margin: 6rem 0;
     gap: 2rem;
 }
 
 .contact input {
-    position: relative;
     border: 2px solid black;
     border-radius: 3rem;
     padding: 2rem 9rem;
@@ -317,18 +321,30 @@ footer ul li a {
 }
 
 .copyright {
-    font-size: 300;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
 }
+
 
 
 
 
 @media (max-width: 1024px) {
     header {
-        padding: 1rem 1.5rem;
-        gap: 1.1rem;
+        padding: 0.4rem 1.2rem;
+        gap: 2rem;
     }
+
+    header .logo {
+        font-size: 1rem;
+    }
+
+    .navLinks {
+        padding: 0;
+        gap: 1.3rem;
+        font-size: 0.9rem;
+    }
+
     .about .aboutContainer {
         gap: 3rem;
     }
@@ -337,17 +353,17 @@ footer ul li a {
         flex-direction: column;
     }
 
+    .experienceInfo img {
+        width: 30vw;
+    }
+
     .contact input {
-        padding: 2rem 6rem;
-        font-size: 1.5rem;
+        padding: 2rem 7rem;
+        font-size: 1.7rem;
     }
 
-    .input input::placeholder {
-        font-size: 1.5rem;
-    }
-
-    .input i {
-        font-size: 2rem;
+    .contact .input i {
+        font-size: 3rem;
     }
 }
 
@@ -355,43 +371,88 @@ footer ul li a {
 
 
 
-
-
-
-
-
 @media (max-width: 460px) {
-    header #menu-icon {
-        display: block;
+    header {
+        width: 60%;
+        padding: 1rem 9rem;
+        gap: 2rem;
+    }
+    header .logo {
+        font-size: 1.1rem;
     }
     
-    .navLinks {
+    header .navLinks {
         position: absolute;
+        top: 100%;
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 2rem;
+        display: none;
+    }
+
+    header .navLinks li {
+        margin: 1rem 0;
+    }
+
+    header .navLinks.active {
+        display: block;
+    }
+
+    header #menuIcon {
+        display: block;
+        font-size: 1.1rem;
+    }
+
+    header .visitButton {
+        display: none;
+    }
+
+    .sectionTitle {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
     }
 
     .about .aboutContainer {
+        display: flex;
+        flex-direction: column;
         gap: 3rem;
     }
 
-    .experienceInfo {
+    .about .aboutContainer img {
+        width: 50vw;
+    }
+
+    .experience .experienceInfo {
         flex-direction: column;
     }
-   
-    .projectCard img {
-        width: 60vw;
-        border-radius: 1rem;
+
+    .experience .experienceInfo .container {
+        display: flex;
+        flex-direction: column;
     }
 
+    .experience .experienceInfo img {
+        width: 50vw;
+    }
+    
     .contact input {
-        padding: 2rem 6rem;
-        font-size: 1.5rem;
+        width: 80vw;
+        padding: 1rem 4rem;
+        font-size: 1.3rem;
     }
 
-    .input input::placeholder {
-        font-size: 1.5rem;
+    .contact .input i {
+        font-size: 1.3rem;
     }
 
-    .input i {
-        font-size: 2rem;
+    footer ul {
+    gap: 2rem;
     }
 }
