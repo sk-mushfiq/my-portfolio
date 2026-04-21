@@ -13,6 +13,34 @@ a {
     text-decoration: none;
 }
 
+.buttonGroup {
+    display: flex;
+    gap: 1rem;
+}
+
+.button {
+    border-radius: 3rem;
+    padding: 0.5rem;
+    border: 2px solid black;
+    cursor: pointer;
+    text-wrap: nowrap;
+    transition: 0.2s ease-in-out;
+}
+
+.button a {
+    color: black;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.button:hover a {
+    color: white;
+}
+
 header {
     position: fixed;
     top: 1rem;
@@ -92,9 +120,9 @@ header .visitButton:hover {
 
 section {
     min-height: 100vh;
-    padding: 8rem 12%;
+    padding: 6rem 2.5rem;
     width: 100%;
-    /* position: relative; */
+    position: relative;
 }
 
 .about {
@@ -140,25 +168,7 @@ section {
     font-size: 1.8rem;
 }
 
-.buttonGroup {
-    display: flex;
-    gap: 1rem;
-}
-
-.button {
-    border-radius: 3rem;
-    padding: 0.5rem;
-    border: 2px solid black;
-    cursor: pointer;
-    text-wrap: nowrap;
-    transition: 0.2s ease-in-out;
-}
-
-.button:hover {
-    background-color: black;
-    color: white;
-}
-.socials {
+.aboutInfo .socials {
     display: flex;
     gap: 2rem;
 }
@@ -180,20 +190,20 @@ section {
     margin-bottom: 3rem;
 }
 
-.experienceInfo {
+.experienceContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8rem;
 }
 
-.container {
+.experienceInfo {
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 3rem;
 }
 
-.container .experienceCard {
+.experienceInfo .experienceCard {
     padding: 1.5rem;
     border: 2px solid black;
     border-radius: 3rem;
@@ -205,7 +215,7 @@ section {
     transition: 0.2s ease-in-out;
 }
 
-.container .experienceCard span {
+.experienceInfo .experienceCard span {
     font-size: 1.5rem;
     margin: 1rem 0;
     background: linear-gradient(to right, #009dff, #ff00ff);
@@ -213,13 +223,13 @@ section {
     color: transparent;
 }
 
-.container .experienceCard:hover {
+.experienceInfo .experienceCard:hover {
     transform: scale(1.02);
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
 }
 
-.experienceInfo img {
+.experienceContainer img {
     width: 20vw;
     border-radius: 3rem;
 }
@@ -238,29 +248,42 @@ section {
     text-align: center;
     border: 2px solid black;
     border-radius: 3rem;
-    padding: 3rem 2rem;
+    padding: 2rem 2rem;
     gap: 1.5rem;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
 
 .projectCard:hover {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
     transform: translateY(-5px) scale(1.02);
 }
 
+.projectInfo .projectCard .buttonGroup {
+    gap: 2rem;
+}
 .projectCard img {
-    width: 20vw;
+    width: 90%;
     border-radius: 1rem;
 }
 
+
 .projectCard:hover .button {
     border: 2px solid white;
+    color: white;
+}
+
+.projectCard:hover .button a {
+    color: white;
 }
 
 .projectCard:hover .button:hover {
     background-color: white;
+    color: black;
+}
+
+.projectCard:hover .button:hover a {
     color: black;
 }
 
@@ -345,16 +368,64 @@ footer ul li a {
         font-size: 0.9rem;
     }
 
+    section {
+        min-height: 100vh;
+        padding: 5rem 2rem;
+    }
+
     .about .aboutContainer {
         gap: 3rem;
     }
 
-    .experienceInfo {
+    .about img {
+        width: 30vw;
+        border-radius: 50%;
+    }
+
+    .aboutInfo {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-items: center;
+        gap: 1.5rem;
+    }
+
+    .aboutInfo h3 {
+        font-size: 1.5rem;
+        opacity: 0.8;
+    }
+
+    .aboutInfo h1 {
+        font-size: 3.1rem;
+    }
+
+    .aboutInfo span {
+        background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+        background-clip: text;
+        color: transparent;
+        font-size: 1.8rem;
+    }
+
+
+
+
+
+
+
+
+
+
+    .experienceContainer {
         flex-direction: column;
     }
 
-    .experienceInfo img {
+    .experienceContainer img {
         width: 30vw;
+    }
+
+    .projectCard img {
+        width: 80%;
     }
 
     .contact input {
@@ -412,6 +483,11 @@ footer ul li a {
         display: none;
     }
 
+    section {
+        min-height: 100vh;
+        padding: 3rem 2rem;
+    }   
+
     .sectionTitle {
     text-align: center;
     font-size: 3rem;
@@ -426,20 +502,32 @@ footer ul li a {
     }
 
     .about .aboutContainer img {
-        width: 50vw;
+        width: 55vw;
     }
 
-    .experience .experienceInfo {
+    .about .aboutContainer .aboutInfo h3 {
+        font-size: 1.2rem;
+
+    .about .aboutContainer .aboutInfo h1 {
+        font-size: 2rem;
+    }
+
+    .about .aboutContainer .aboutInfo span {
+        font-size: 1.6rem;
+    }
+
+    .experience .experienceContainer {
         flex-direction: column;
+        gap: 4rem;
     }
 
-    .experience .experienceInfo .container {
+    .experience .experienceContainer .experienceInfo {
         display: flex;
         flex-direction: column;
     }
 
-    .experience .experienceInfo img {
-        width: 50vw;
+    .experience .experienceContainer img {
+        width: 60vw;
     }
     
     .contact input {
