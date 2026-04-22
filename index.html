@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sheikh Mushfiqur Rakib</title>
+    <title>Sheikh Mushfiqur Rakib - Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="https://use.typekit.net/ohc7mcu.css">
@@ -14,133 +14,142 @@
         <a href="#" class="logo">
             <span>Sheikh Mushfiqur Rakib</span>
         </a>
-        <ul class="navLinks">
-            <li>
-                <a href="#about">About</a>
-            </li>
-            <li>
-                <a href="#experience">Experience</a>
-            </li>
-            <li>
-                <a href="#projects">Project</a>
-            </li>
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
-        </ul>
-        <i class="fa-solid fa-bars" id="menuIcon"></i>
-        <a class="visitButton" href="https://github.com/sk-mushfiq" target="_blank">Visit GitHub</a>
+        <nav class="navbar" aria-label="Primary navigation">
+            <ul class="navLinks">
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <a href="#experience">Experience</a>
+                </li>
+                <li>
+                    <a href="#projects">Project</a>
+                </li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+        <button class="button" id="menuIcon" aria-label="Open navigation menu" aria-expanded="false">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+        <a class="visitButton" href="https://github.com/sk-mushfiq" target="_blank" rel="noopener noreferrer">Visit GitHub</a>
     </header>
 
-    <section class="about" id="about">
-        <div class="aboutContainer">
-            <img src="image_dp.png" alt="" srcset="">
-            <div class="aboutInfo">
-                <div class="text">
-                    <h3>Hi, I'm</h3>
-                    <h1>Sheikh Mushfiqur Rakib</h1>
-                    <span>Software Developer</span>
-                </div>
-                <div class="buttonGroup">
-                    <div class="button">
-                        <a href="D:\Internship (Reformed Tech)\Project\Portfolio\Resume - Sheikh Mushfiqur Rakib.pdf" download="NewFileName.pdf" class="downloadButton">Download Resume</a>
+    <main>
+        <section class="about" id="about">
+            <div class="aboutContainer">
+                <img src="image_dp.png" alt="" srcset="">
+                <div class="aboutInfo">
+                    <div class="text">
+                        <h3>Hi, I'm</h3>
+                        <h1>Sheikh Mushfiqur Rakib</h1>
+                        <span>Software Developer</span>
                     </div>
-                    <!-- <div class="button">Contacts</div> -->
-                </div>
-                <div class="socials">
-                    <a href="https://github.com/sk-mushfiq" target="_blank"> <i class="fa-brands fa-github"></i> </a>
-                    <a href="https://www.linkedin.com/in/skmushfiq/" target="_blank"> <i class="fa-brands fa-linkedin"></i> </a>
+                    <div class="buttonGroup">
+                        <div class="button">
+                            <a href="Resume - Sheikh Mushfiqur Rakib.pdf" download="NewFileName.pdf" class="downloadButton">Download Resume</a>
+                        </div>
+                        <!-- <div class="button">Contacts</div> -->
+                    </div>
+                    <div class="socials">
+                        <a href="https://github.com/sk-mushfiq" target="_blank" rel="noopener noreferrer"> <i class="fa-brands fa-github" aria-hidden="true"></i> </a>
+                        <a href="https://www.linkedin.com/in/skmushfiq/" target="_blank" rel="noopener noreferrer"> <i class="fa-brands fa-linkedin" aria-hidden="true"></i> </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="experience"  id="experience">
-        <h2 class="sectionTitle">Experience</h2>
-        
-        <div class="experienceContainer">
-            <div class="experienceInfo">
-                <div class="experienceCard">
-                    <i class="fa-solid fa-code"></i>
-                    <span>Software Development Intern</span>
-                    <h3>6 Months</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, et.</p>
+        <section class="experience" id="experience">
+            <h2 class="sectionTitle">Experience</h2>
+            
+            <div class="experienceContainer">
+                <div class="experienceInfo">
+                    <div class="experienceCard">
+                        <i class="fa-solid fa-code" aria-hidden="true"></i>
+                        <span>Software Development Intern</span>
+                        <h3>6 Months</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, et.</p>
+                    </div>
+                    
+                    <div class="experienceCard">
+                        <i class="fa-solid fa-book-open-reader" aria-hidden="true"></i>
+                        <span>Research Assistant</span>
+                        <h3>3 Years</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, et.</p>
+                    </div>
+                </div>
+
+                <img src="image_dp.png" alt="" alt="Profile photo" loading="lazy">
+            </div>
+
+        </section>
+
+        <section class="projects" id="projects">
+            <h2 class="sectionTitle">Projects</h2>
+            
+            <div class="projectInfo">
+                <div class="projectCard">
+                    <img src="project1.png" alt="PolicyBot — RAG-powered chatbot interface screenshot" loading="lazy">
+                    <h3>PolicyBot - RAG-Powered Intelligent Chatbot</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At blanditiis, quam autem tempora fuga eum.</p>
+                    <div class="buttonGroup">
+                        <!-- <div class="button">Live Demo</div> -->
+                        <div class="button"> <a href="https://github.com/sk-mushfiq/PolicyBot-RAG-powered-intelligent-chatbot" target="_blank">GitHub Repository</a> </div>
+                    </div>
+                </div>
+
+                <div class="projectCard">
+                    <img src="project2.png" alt="AI-Powered Leave Request Automation — project screenshot" loading="lazy">
+                    <h3>AI-Powered Leave Request Automation</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, sed delectus maiores ut excepturi ratione.</p>
+                    <div class="buttonGroup">
+                        <!-- <div class="button">Live Demo</div> -->
+                        <div class="button"> <a href="https://github.com/sk-mushfiq/ai-powered-leave-request-automation" target="_blank">GitHub Repository</a> </div>
+                    </div>
                 </div>
                 
-                <div class="experienceCard">
-                    <i class="fa-solid fa-book-open-reader"></i>
-                    <span>Research Assistant</span>
-                    <h3>3 Years</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, et.</p>
+                <div class="projectCard">
+                    <img src="project3.png" alt="Kidney Disease Prediction — model results screenshot" loading="lazy">
+                    <h3>Kidney Disease Prediction</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta ullam sapiente delectus? Voluptates, voluptas odit.</p>
+                    <div class="buttonGroup">
+                        <!-- <div class="button">Live Demo</div> -->
+                        <div class="button"> <a href="https://github.com/sk-mushfiq/Kidney-disease-prediction-using-ML-classifiers" target="_blank">GitHub Repository</a> </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <img src="image_dp.png" alt="" srcset="">
-        </div>
-
-    </section>
-
-    <section class="projects" id="projects">
-        <h2 class="sectionTitle">Projects</h2>
-        
-        <div class="projectInfo">
-            <div class="projectCard">
-                <img src="project1.png" alt="" srcset="">
-                <h3>PolicyBot - RAG-Powered Intelligent Chatbot</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At blanditiis, quam autem tempora fuga eum.</p>
-                <div class="buttonGroup">
-                    <!-- <div class="button">Live Demo</div> -->
-                    <div class="button"> <a href="https://github.com/sk-mushfiq/PolicyBot-RAG-powered-intelligent-chatbot" target="_blank">GitHub Repository</a> </div>
+        <section class="contact" id="contact">
+                <h2 class="sectionTitle">Contact</h2>
+                <div class="input">
+                    
+                    <input type="email" class="email" placeholder="example@email.com" required>
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                 </div>
-            </div>
 
-            <div class="projectCard">
-                <img src="project2.png" alt="" srcset="">
-                <h3>AI-Powered Leave Request Automation</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, sed delectus maiores ut excepturi ratione.</p>
-                <div class="buttonGroup">
-                    <!-- <div class="button">Live Demo</div> -->
-                    <div class="button"> <a href="https://github.com/sk-mushfiq/ai-powered-leave-request-automation" target="_blank">GitHub Repository</a> </div>
-                </div>
-            </div>
-            
-            <div class="projectCard">
-                <img src="project3.png" alt="" srcset="">
-                <h3>Kidney Disease Prediction</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta ullam sapiente delectus? Voluptates, voluptas odit.</p>
-                <div class="buttonGroup">
-                    <!-- <div class="button">Live Demo</div> -->
-                    <div class="button"> <a href="https://github.com/sk-mushfiq/Kidney-disease-prediction-using-ML-classifiers" target="_blank">GitHub Repository</a> </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <sector class="contact" id="contact">
-            <h2 class="sectionTitle">Contact</h2>
-            <div class="input">
-                <input type="text" placeholder="example@email.com">
-                <i class="fa-solid fa-envelope"></i>
-            </div>
-
-            <div class="button">Submit</div>
-    </sector>
+                <button class="button submitButton" type="button">Submit</button>
+        </section>
+    </main>
 
     <footer>
-        <ul>
-             <li>
-                <a href="#about">About</a>
-            </li>
-            <li>
-                <a href="#experience">Experience</a>
-            </li>
-            <li>
-                <a href="#projects">Project</a>
-            </li>
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
-        </ul>
+        <nav aria-label="Footer navigation">
+            <ul>
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <a href="#experience">Experience</a>
+                </li>
+                <li>
+                    <a href="#projects">Project</a>
+                </li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
         <p class="copyright">© All Rights Reserved | Sheikh Mushfiqur Rakib</p>
     </footer>
 

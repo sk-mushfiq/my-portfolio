@@ -1,546 +1,666 @@
-* {
+/* SHEIKH MUSHFIQUR RAKIB — PORTFOLIO STYLES*/
+
+
+/* CSS Custom Properties) */
+:root {
+    --accent-start: rgb(0, 157, 255);   /* cyan-blue */
+    --accent-end: rgb(255, 0, 255);   /* magenta   */
+    --gradient: linear-gradient(to right, var(--accent-start), var(--accent-end));
+    --gradient-rev: linear-gradient(to right, var(--accent-end), var(--accent-start));
+
+    --color-dark: rgba(0, 0, 0, 0.82);
+    --color-black: black;
+    --color-white: white;
+
+    /* Fluid section padding — scales between 480 px and 1280 px viewports */
+    --section-pad-x:  clamp(1.25rem, 5vw, 5rem);
+    --section-pad-y:  clamp(5rem,   8vw, 8rem);
+
+    /* Max content width — prevents text lines from becoming unreadably long */
+    --max-content: 1200px;
+
+    --radius-pill: 10rem;
+    --radius-card: 2rem;
+
+    --transition-fast: 0.2s ease-in-out;
+    --transition-med:  0.3s ease-in-out;
+}
+
+
+/* RESET & BASE */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins";
-    text-decoration: none;
+}
+
+html {
     scroll-behavior: smooth;
-    list-style: none;
+    /*font-size: 16px;*/     /* explicit root size for reliable rem calculations */
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    /* color: var(--color-black); */
+    overflow-x: hidden; /* prevent horizontal scroll from any off-canvas elements */
 }
 
 a {
-    color: black;
+    /* color: inherit; */
     text-decoration: none;
 }
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;      /* preserve aspect ratio always */
+}
+
+
+/* UTILITIES */
+
+/* Centred max-width wrapper reused in every section */
+/* .container {
+    width: 100%;
+    max-width: var(--max-content);
+    margin-inline: auto;
+} */
 
 .buttonGroup {
     display: flex;
+    flex-wrap: wrap;   /* buttons wrap instead of overflow on narrow screens */
     gap: 1rem;
+    justify-content: center;
 }
 
 .button {
-    border-radius: 3rem;
-    padding: 0.5rem;
-    border: 2px solid black;
+    border-radius: var(--radius-pill);
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--color-black);
     cursor: pointer;
-    text-wrap: nowrap;
-    transition: 0.2s ease-in-out;
+    white-space: nowrap;        /* correct property — text-wrap: nowrap is non-standard */
+    transition: var(--transition-fast);
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
 }
 
 .button a {
-    color: black;
-    text-decoration: none;
+    color: var(--color-black);
 }
 
 .button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    background-color: var(--color-dark);
+    color: var(--color-white);
 }
 
 .button:hover a {
-    color: white;
-}
-
-header {
-    position: fixed;
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 3rem;
-    z-index: 1000;
-}
-
-header .logo {
-    color: white;
-    font-size: 1.3rem;
-    font-weight: 600;
-    text-wrap: nowrap;
-    transition: 0.3s ease-in-out;
-}
-
-header .logo:hover {
-    transform: scale(1.1);
-}
-
-header .navLinks {
-    display: flex;
-    gap: 2rem;
-}
-
-header ul li a {
-    position: relative;
-    color: white;
-}
-
-header ul li a::before {
-    position: absolute;
-    content: "";
-    width: 0;
-    left: 0;
-    height: 5px;
-    top: 25px;
-    border-radius: 1rem;
-    transition: 0.3s ease-in-out;
-    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
-}
-
-header ul li a:hover::before {
-    width: 100%;
-}
-
-header #menuIcon {
-    font-size: 2rem;
-    display: none;
-}
-
-header .visitButton {
-    padding: 0.6rem 1.2rem;
-    border-radius: 3rem;
-    border: none;
-    font-size: 0.9rem;
-    color: white;
-    cursor: pointer;
-    text-wrap: nowrap;
-    transition: 0.3s ease-in-out;
-    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
-}
-
-header .visitButton:hover {
-    background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
-    transform: scale(1.03);
-}
-
-section {
-    min-height: 100vh;
-    padding: 6rem 2.5rem;
-    width: 100%;
-    position: relative;
-}
-
-.about {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.about .aboutContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7rem;
-}
-
-.about img {
-    width: 30vw;
-    border-radius: 50%;
-}
-
-.aboutInfo {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-items: center;
-    gap: 1.5rem;
-}
-
-.aboutInfo h3 {
-    font-size: 1.5rem;
-    opacity: 0.8;
- }
-
-.aboutInfo h1 {
-    font-size: 3.1rem;
-}
-
-.aboutInfo span {
-    background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
-    background-clip: text;
-    color: transparent;
-    font-size: 1.8rem;
-}
-
-.aboutInfo .socials {
-    display: flex;
-    gap: 2rem;
-}
-
-.socials i {
-    font-size: 2.5rem;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-}
-
-.socials i:hover {
-    transform: scale(1.1);
+    color: var(--color-white);
 }
 
 .sectionTitle {
     text-align: center;
-    font-size: 4rem;
-    font-weight: 600;
-    margin-bottom: 3rem;
+    /* clamp(min, preferred, max) — fluid font size that never hits extremes */
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
 }
 
+/* Generic gradient text helper */
+/* .grad-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+} */
+
+
+/* HEADER & NAVIGATION */
+.header {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 4rem); /* gap shrinks fluidly; never forced-overflow */
+
+    background-color: var(--color-dark);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--color-white);
+    padding: 0.55rem 1.5rem;
+    border-radius: var(--radius-pill);
+
+    /* Prevent the pill from ever touching the screen edges */
+    max-width: calc(100vw - 2rem);
+    width: max-content;
+}
+
+/* LOGO */
+.header .logo {
+    color: var(--color-white);
+    font-size: clamp(0.85rem, 1.5vw, 1.25rem);
+    font-weight: 700;
+    white-space: nowrap;
+    transition: var(--transition-med);
+    flex-shrink: 0; /* never squish the logo text */
+}
+
+.header .logo:hover {
+    transform: scale(1.08);
+}
+
+/* NAVBAR LINKS */
+.header .navLinks {
+    display: flex;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    align-items: center;
+}
+
+.header .navLinks li a {
+    position: relative;
+    color: var(--color-white);
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    padding-bottom: 4px;
+}
+
+/* ANIMATED UNDERLINES */
+.header .navLinks li a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    border-radius: 1rem;
+    background: var(--gradient);
+    transition: width var(--transition-med);
+}
+
+.header .navLinks li a:hover::after {
+    width: 100%;
+}
+
+/* MENU ICON */
+.header #menuIcon {
+    display: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+/* VISIT GITHUB BUTTON*/
+.header .visitButton {
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius-pill);
+    /* border: none; */
+    font-size: clamp(0.85rem, 1vw, 0.88rem);;
+    /* font-family: inherit; */
+    color: var(--color-white);
+    cursor: pointer;
+    white-space: nowrap;
+    /* flex-shrink: 0; */
+    transition: var(--transition-med);
+    background: var(--gradient);
+}
+
+.header .visitButton:hover {
+    background: var(--gradient-rev);
+    transform: scale(1.04);
+}
+
+
+/* SECTIONS */
+section {
+    min-height: 100svh; /* svh = small viewport height — accounts for mobile browser chrome */
+    padding: var(--section-pad-y) var(--section-pad-x);
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ABOUT SECTION */
+.about .aboutContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2rem, 6vw, 6rem);
+    flex-wrap: wrap; /* auto-wraps to column on narrow viewports without a breakpoint hack */
+    max-width: var(--max-content);
+    width: 100%;
+}
+
+/* PROFILE PHOTO */
+.about .aboutContainer > img {
+    width: clamp(160px, 28vw, 380px);
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1; /* always a perfect circle regardless of image dims */
+    flex-shrink: 0;
+}
+
+/* INFORMATION*/
+.aboutInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    gap: 1.25rem;
+    /* flex-basis lets this column grow but never forces a specific width */
+    flex: 1 1 280px;
+    max-width: clamp(200px, 40vw, 550px);;
+}
+
+.aboutInfo h3 {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    opacity: 0.75;
+}
+
+.aboutInfo h1 {
+    font-size: clamp(1.6rem, 4vw, 3.1rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+/* .aboutInfo .role {
+    background: var(--gradient-rev);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+    font-weight: 600;
+} */
+
+.aboutInfo .downloadButton {
+    display: inline-block;
+    /* padding: 0.55rem 1.4rem;
+    border-radius: var(--radius-pill);
+    border: 2px solid var(--color-black);
+    color: var(--color-black);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition-fast); */
+    white-space: nowrap;
+}
+
+/* .aboutInfo .downloadButton:hover {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+} */
+
+.aboutInfo .socials {
+    display: flex;
+    gap: 1.5rem;
+    /* margin-top: 0.25rem; */
+}
+
+.aboutInfo .socials a {
+    color: var(--color-black);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    /* line-height: 1; */
+    transition: transform var(--transition-fast);
+    display: inline-flex;
+}
+
+.aboutInfo .socials a:hover {
+    transform: scale(1.15);
+}
+
+
+/* EXPERIENCE SECTION */
+.experience {
+    justify-content: flex-start;
+}
+
+/*EXPERIENCE INFORMATION*/
 .experienceContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8rem;
+    gap: clamp(2rem, 6vw, 8rem);
+    flex-wrap: wrap;
+    max-width: var(--max-content);
+    width: 100%;
 }
 
 .experienceInfo {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(1.2rem, 3vw, 2.5rem);
+    flex: 1 1 380px;
 }
 
-.experienceInfo .experienceCard {
+.experienceCard {
     padding: 1.5rem;
-    border: 2px solid black;
-    border-radius: 3rem;
+    border: 2px solid var(--color-black);
+    border-radius: var(--radius-card);
     display: flex;
     flex-direction: column;
-    align-items: baseline;
-    justify-content: left;
+    align-items: flex-start;   /* valid flex value (flex-start, not "left") */
+    justify-content: flex-start;
     cursor: pointer;
-    transition: 0.2s ease-in-out;
+    transition: var(--transition-fast);
 }
 
-.experienceInfo .experienceCard span {
-    font-size: 1.5rem;
-    margin: 1rem 0;
-    background: linear-gradient(to right, #009dff, #ff00ff);
+.experienceCard i {
+    font-size: 1.6rem;
+}
+
+.experienceCard span {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    margin: 0.8rem 0 0.4rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    font-weight: 600;
 }
 
-.experienceInfo .experienceCard:hover {
+.experienceCard h3 {
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+    margin-bottom: 0.5rem;
+}
+
+.experienceCard p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+.experienceCard:hover {
     transform: scale(1.02);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    background-color: var(--color-dark);
+    color: var(--color-white);
 }
 
-.experienceContainer img {
-    width: 20vw;
-    border-radius: 3rem;
+/* SIDE IMAGE */
+.experienceContainer > img {
+    width: clamp(160px, 22vw, 320px);
+    border-radius: var(--radius-card);
+    object-fit: cover;
+    flex-shrink: 0;
 }
+
+
+/* PROJECTS SECTION */
+/* .projects {
+    display: flex;
+    justify-content: flex-start;
+} */
 
 .projectInfo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    /* auto-fit with fluid min makes this responsive with zero breakpoints */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: clamp(1.2rem, 3vw, 2rem);
+    width: 100%;
+    max-width: var(--max-content);
 }
 
 .projectCard {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
-    border: 2px solid black;
-    border-radius: 3rem;
-    padding: 2rem 2rem;
-    gap: 1.5rem;
+    border: 2px solid var(--color-black);
+    border-radius: var(--radius-card);
+    padding: 1.5rem 1rem;
+    gap: 1.2rem;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
+    transition: var(--transition-med);
 }
 
 .projectCard:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    transform: translateY(-5px) scale(1.02);
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-.projectInfo .projectCard .buttonGroup {
-    gap: 2rem;
-}
 .projectCard img {
     width: 90%;
-    border-radius: 1rem;
-}
-
-
-.projectCard:hover .button {
-    border: 2px solid white;
-    color: white;
-}
-
-.projectCard:hover .button a {
-    color: white;
-}
-
-.projectCard:hover .button:hover {
-    background-color: white;
-    color: black;
-}
-
-.projectCard:hover .button:hover a {
-    color: black;
+    border-radius: 0.75rem;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
 }
 
 .projectCard h3 {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    line-height: 1.3;
+    font-weight: 600;
 }
 
+.projectCard p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.55;
+}
+
+.projectCard:hover .button {
+    border-color: var(--color-white);
+    color: var(--color-white);
+}
+
+.projectCard:hover .button a {
+    color: var(--color-white);
+}
+
+.projectCard:hover .button:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.projectCard:hover .button:hover a {
+    color: var(--color-black);
+}
+
+
+/* CONTACT SECTION */
 .contact {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: 6rem 0;
+    justify-content: flex-start;
+    /* text-align: center; */
     gap: 2rem;
-}
-
-.contact input {
-    border: 2px solid black;
-    border-radius: 3rem;
-    padding: 2rem 9rem;
-    font-size: 2rem;
 }
 
 .contact .input {
     position: relative;
+    width: min(100%, 520px); /* never wider than viewport, never wider than 520 px */
+}
+
+.contact input {
+    width: 100%;
+    border: 2px solid var(--color-black);
+    border-radius: var(--radius-pill);
+    /* fluid padding — shrinks on small screens, never overflows */
+    padding: clamp(0.75rem, 2vw, 1.4rem) clamp(1rem, 4vw, 2rem);
+    padding-left: 4rem;  /* reserved space for the icon */
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-family: inherit;
+    outline: none;
+    transition: border-color var(--transition-fast);
+}
+
+.contact input:focus {
+    border-color: var(--accent-start);
+    box-shadow: 0 0 0 3px rgba(0,157,255,0.15);
 }
 
 .contact .input i {
     position: absolute;
-    font-size: 4rem;
+    left: 1rem;
     top: 50%;
-    left: 10px;
-    transform: translate(50%, -50%);
+    transform: translateY(-50%);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    pointer-events: none;  /* click passes through to input */
+    color: var(--color-black);
+    opacity: 0.6;
 }
 
+
+/* =============================================
+   10. FOOTER
+   ============================================= */
 footer {
-    bottom: 0;
-    left: 0;
-    height: 10rem;
     width: 100%;
+    padding: 2.5rem var(--section-pad-x);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
 footer ul {
     display: flex;
-    align-items: center;
-    gap: 3rem;
+    flex-wrap: wrap;       /* links wrap to next line rather than overflowing */
+    justify-content: center;
+    gap: clamp(1rem, 4vw, 3rem);
 }
 
 footer ul li a {
-    color: black;
     font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-black);
+    transition: opacity var(--transition-fast);
+}
+
+footer ul li a:hover {
+    opacity: 0.6;
 }
 
 .copyright {
-    margin-top: 1.5rem;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
+    opacity: 0.55;
+    text-align: center;
 }
 
 
+/* RESPONSIVE BREAKPOINTS */
 
-
-
+/* Tablet landscape(≤ 1024px)*/
 @media (max-width: 1024px) {
-    header {
-        padding: 0.4rem 1.2rem;
-        gap: 2rem;
+    .header {
+        gap: clamp(0.8rem, 2vw, 2rem);
+        padding: 0.5rem 1.2rem;
+    }
+}
+
+/* Tablet portrait (≤ 768px) */
+@media (max-width: 768px) {
+    /* Hide GitHub button; keep nav visible — there's room */
+    .header .visitButton {
+        display: none;
     }
 
-    header .logo {
-        font-size: 1rem;
-    }
-
-    .navLinks {
-        padding: 0;
-        gap: 1.3rem;
-        font-size: 0.9rem;
-    }
-
-    section {
-        min-height: 100vh;
-        padding: 5rem 2rem;
-    }
-
-    .about .aboutContainer {
-        gap: 3rem;
-    }
-
-    .about img {
-        width: 30vw;
-        border-radius: 50%;
-    }
-
-    .aboutInfo {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-        justify-items: center;
-        gap: 1.5rem;
-    }
-
-    .aboutInfo h3 {
-        font-size: 1.5rem;
-        opacity: 0.8;
-    }
-
-    .aboutInfo h1 {
-        font-size: 3.1rem;
-    }
-
-    .aboutInfo span {
-        background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
-        background-clip: text;
-        color: transparent;
-        font-size: 1.8rem;
-    }
-
-
-
-
-
-
-
-
-
-
+    /* Stack experience side-image below cards */
     .experienceContainer {
         flex-direction: column;
     }
 
-    .experienceContainer img {
-        width: 30vw;
+    .experienceContainer > img {
+        width: clamp(180px, 45vw, 300px);
     }
 
-    .projectCard img {
-        width: 80%;
-    }
-
-    .contact input {
-        padding: 2rem 7rem;
-        font-size: 1.7rem;
-    }
-
-    .contact .input i {
-        font-size: 3rem;
+    .contact .input {
+        width: min(100%, 420px);
     }
 }
 
-
-
-
-
-@media (max-width: 460px) {
-    header {
-        width: 60%;
-        padding: 1rem 9rem;
-        gap: 2rem;
+/* ── Mobile (≤ 640px) ── */
+@media (max-width: 640px) {
+    /* NAVBAR COLLAPSES TO MENU ICON */
+    .header {
+        width: auto;
+        max-width: calc(100vw - 2rem);
+        padding: 0.7rem 1.2rem;
+        gap: 1rem;
+        justify-content: space-between;
     }
-    header .logo {
-        font-size: 1.1rem;
-    }
-    
-    header .navLinks {
+
+    .header .navLinks {
+        display: none;
         position: absolute;
-        top: 100%;
+        top: calc(100% + 0.75rem);
+        left: 0;
+        right: 0;
         width: 100%;
-        padding: 1rem;
-        margin-top: 1rem;
-        display: flex;
         flex-direction: column;
+        align-items: center;
+        gap: 0;
+        background-color: var(--color-dark);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius-card);
+        padding: 1rem 0;
+        min-width: 200px;
+    }
+
+    .header .navLinks.active {
+        display: flex;
+    }
+
+    .header .navLinks li {
+        width: 100%;
         text-align: center;
-        background-color: rgba(0, 0, 0, 0.8);
-        border-radius: 2rem;
+        padding: 0.65rem 1.5rem;
+    }
+
+    .header .navLinks li a::after {
         display: none;
     }
 
-    header .navLinks li {
-        margin: 1rem 0;
-    }
-
-    header .navLinks.active {
+    /* SHOW MENU ICON */
+    .header #menuIcon {
         display: block;
     }
 
-    header #menuIcon {
-        display: block;
-        font-size: 1.1rem;
+    .about .aboutContainer > img {
+        width: clamp(140px, 55vw, 220px);
     }
 
-    header .visitButton {
-        display: none;
+    .experienceInfo {
+        grid-template-columns: 1fr;
     }
 
-    section {
-        min-height: 100vh;
-        padding: 3rem 2rem;
-    }   
-
-    .sectionTitle {
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: 3rem;
+    .experienceContainer > img {
+        width: clamp(160px, 55vw, 260px);
     }
 
+    /* Footer links tighter */
+    footer ul {
+        gap: 1.2rem;
+    }
+}
+
+/* Small mobile (≤ 400px) */
+@media (max-width: 400px) {
     .about .aboutContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
+        gap: 1.5rem;
     }
 
-    .about .aboutContainer img {
+    .about .aboutContainer > img {
         width: 55vw;
     }
 
-    .about .aboutContainer .aboutInfo h3 {
-        font-size: 1.2rem;
-
-    .about .aboutContainer .aboutInfo h1 {
-        font-size: 2rem;
-    }
-
-    .about .aboutContainer .aboutInfo span {
-        font-size: 1.6rem;
-    }
-
-    .experience .experienceContainer {
+    .buttonGroup {
         flex-direction: column;
-        gap: 4rem;
-    }
-
-    .experience .experienceContainer .experienceInfo {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .experience .experienceContainer img {
-        width: 60vw;
-    }
-    
-    .contact input {
-        width: 80vw;
-        padding: 1rem 4rem;
-        font-size: 1.3rem;
-    }
-
-    .contact .input i {
-        font-size: 1.3rem;
-    }
-
-    footer ul {
-    gap: 2rem;
+        align-items: center;
     }
 }
