@@ -1,258 +1,416 @@
-* {
+/* SHEIKH MUSHFIQUR RAKIB — PORTFOLIO STYLES*/
+
+
+/* CSS Custom Properties) */
+:root {
+    --accent-start: rgb(0, 157, 255);   /* cyan-blue */
+    --accent-end: rgb(255, 0, 255);   /* magenta   */
+    --gradient: linear-gradient(to right, var(--accent-start), var(--accent-end));
+    --gradient-rev: linear-gradient(to right, var(--accent-end), var(--accent-start));
+
+    --color-dark: rgba(0, 0, 0, 0.82);
+
+    /* Fluid section padding — scales between 480 px and 1280 px viewports */
+    --section-pad-x:  clamp(1.25rem, 5vw, 5rem);
+    --section-pad-y:  clamp(5rem,   8vw, 8rem);
+
+    /* Max content width — prevents text lines from becoming unreadably long */
+    --max-content: 1200px;
+
+    --radius-pill: 10rem;
+    --radius-card: 2rem;
+
+    --transition-fast: 0.2s ease-in-out;
+    --transition-med:  0.3s ease-in-out;
+}
+
+
+/* RESET & BASE */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins";
-    text-decoration: none;
+}
+
+html {
     scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden; /* prevent horizontal scroll from any off-canvas elements */
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
     list-style: none;
 }
 
-header {
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* UTILITIES */
+.buttonGroup {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 1rem;
+    justify-content: center;
+}
+
+.button {
+    border-radius: var(--radius-pill);
+    padding: 0.5rem 1rem;
+    border: 2px solid black;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition-fast);
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.button a {
+    color: black;
+}
+
+.button:hover {
+    background-color: var(--color-dark);
+    color: white;
+}
+
+.button:hover a {
+    color: white;
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 4rem); /* clamp(min, preferred, max) — fluid font size that never hits extremes */
+    font-weight: 700;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+}
+
+/* HEADER & NAVIGATION */
+.header {
     position: fixed;
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1000;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
+    gap: clamp(1rem, 3vw, 4rem);
+
+    background-color: var(--color-dark);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 3rem;
-    z-index: 1000;
+    padding: 0.55rem 1.5rem;
+    border-radius: var(--radius-pill);
+
+    max-width: calc(100vw - 2rem);
+    width: max-content;
 }
 
-.logo {
+/* LOGO */
+.header .logo {
     color: white;
-    font-size: 1.3rem;
-    font-weight: 600;
-    text-wrap: nowrap;
-    transition: 0.3s ease-in-out;
+    font-size: clamp(0.85rem, 1.5vw, 1.25rem);
+    font-weight: 700;
+    white-space: nowrap;
+    transition: var(--transition-med);
+    flex-shrink: 0; /* never squish the logo text */
 }
 
-.logo:hover {
-    transform: scale(1.1);
+.header .logo:hover {
+    transform: scale(1.08);
 }
 
-.navLinks {
+/* NAVBAR LINKS */
+.header .navLinks {
     display: flex;
-    gap: 2rem;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    align-items: center;
 }
 
-li a {
+.header .navLinks li a {
     position: relative;
     color: white;
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    padding-bottom: 4px;
 }
 
-li a::before {
-    position: absolute;
+/* ANIMATED UNDERLINES */
+.header .navLinks li a::after {
     content: "";
-    width: 0;
+    position: absolute;
+    bottom: -2px;
     left: 0;
-    height: 5px;
-    top: 25px;
+    width: 0;
+    height: 3px;
     border-radius: 1rem;
-    transition: 0.3s ease-in-out;
-    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+    background: var(--gradient);
+    transition: width var(--transition-med);
 }
 
-li a:hover::before {
+.header .navLinks li a:hover::after {
     width: 100%;
 }
 
-.visitButton {
-    padding: 0.8rem 1.5rem;
-    border-radius: 3rem;
-    border: none;
-    font-size: 1rem;
+/* MENU ICON */
+.header #menuIcon {
+    display: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+/* VISIT GITHUB BUTTON*/
+.header .visitButton {
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius-pill);
+    font-size: clamp(0.85rem, 1vw, 0.88rem);;
     color: white;
     cursor: pointer;
-    text-wrap: nowrap;
-    transition: 0.3s ease-in-out;
-    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: var(--transition-med);
+    background: var(--gradient);
 }
 
-.visitButton:hover {
-    background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
-    transform: scale(1.03);
+.header .visitButton:hover {
+    background: var(--gradient-rev);
+    transform: scale(1.04);
 }
 
-#menuIcon {
-    font-size: 2rem;
-    display: none;
-}
 
+/* SECTIONS */
 section {
-    min-height: 100vh;
-    padding: 8rem 12%;
+    min-height: 100svh;
+    padding: var(--section-pad-y) var(--section-pad-x);
     width: 100%;
     position: relative;
-}
-
-.about {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+
+/* ABOUT SECTION */
 .about .aboutContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 7rem;
+    gap: clamp(2rem, 6vw, 6rem);
+    flex-wrap: wrap;
+    max-width: var(--max-content);
+    width: 100%;
 }
 
-.about img {
-    width: 30vw;
+/* PROFILE PHOTO */
+.about .aboutContainer img {
+    width: clamp(160px, 28vw, 380px);
     border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
 }
 
+/* INFORMATION*/
 .aboutInfo {
     display: flex;
     flex-direction: column;
-    text-align: center;
     align-items: center;
-    justify-items: center;
-    gap: 1.5rem;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    gap: 1.25rem;
+    flex: 1 1 280px;
+    max-width: clamp(200px, 40vw, 550px);;
 }
 
 .aboutInfo h3 {
-    font-size: 1.5rem;
-    opacity: 0.8;
- }
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    opacity: 0.75;
+}
 
 .aboutInfo h1 {
-    font-size: 3.1rem;
+    font-size: clamp(1.6rem, 4vw, 3.1rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
 }
 
 .aboutInfo span {
-    background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+    background: var(--gradient-rev);
+    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    font-size: 1.8rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.8rem);
 }
 
-.buttonGroup {
+.aboutInfo .downloadButton {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.aboutInfo .socials {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
+    margin-top: 0.25rem;
 }
 
-.button {
-    border-radius: 3rem;
-    padding: 0.5rem;
-    border: 2px solid black;
-    cursor: pointer;
-    text-wrap: nowrap;
-    transition: 0.2s ease-in-out;
+.aboutInfo .socials a {
+    color: black;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    transition: transform var(--transition-fast);
+    display: inline-flex;
 }
 
-.button:hover {
-    background-color: black;
-    color: white;
-}
-.socials {
-    display: flex;
-    gap: 2rem;
-}
-
-.socials i {
-    font-size: 2.5rem;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-}
-
-.socials i:hover {
-    transform: scale(1.1);
+.aboutInfo .socials a:hover {
+    transform: scale(1.15);
 }
 
 
-.sectionTitle {
-    text-align: center;
-    font-size: 4rem;
-    font-weight: 600;
-    margin-bottom: 3rem;
+/* EXPERIENCE SECTION */
+.experience {
+    justify-content: flex-start;
 }
 
-.experienceInfo {
+/*EXPERIENCE INFORMATION*/
+.experienceContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8rem;
+    gap: clamp(2rem, 6vw, 8rem);
+    flex-wrap: wrap;
+    max-width: var(--max-content);
+    width: 100%;
 }
 
-.container {
+.experienceInfo {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(1.2rem, 3vw, 2.5rem);
+    flex: 1 1 380px;
 }
 
-.container .experienceCard {
+.experienceCard {
     padding: 1.5rem;
     border: 2px solid black;
-    border-radius: 3rem;
+    border-radius: var(--radius-card);
     display: flex;
     flex-direction: column;
-    align-items: baseline;
-    justify-content: left;
+    align-items: flex-start;
+    justify-content: flex-start;
     cursor: pointer;
-    transition: 0.2s ease-in-out;
+    transition: var(--transition-fast);
 }
 
-.container .experienceCard span {
-    font-size: 1.5rem;
-    margin: 1rem 0;
-    background: linear-gradient(to right, #009dff, #ff00ff);
+.experienceCard i {
+    font-size: 1.6rem;
+}
+
+.experienceCard span {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    margin: 0.8rem 0 0.4rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    font-weight: 600;
 }
 
-.container .experienceCard:hover {
+.experienceCard h3 {
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+    margin-bottom: 0.5rem;
+}
+
+.experienceCard p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+.experienceCard:hover {
     transform: scale(1.02);
-    background-color: black;
+    background-color: var(--color-dark);
     color: white;
 }
 
-.experienceInfo img {
-    width: 20vw;
-    border-radius: 3rem;
+.experienceContainer img {
+    width: clamp(160px, 22vw, 320px);
+    border-radius: var(--radius-card);
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
+
+/* PROJECTS SECTION */
 .projectInfo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); /* auto-fit with fluid min makes responsive without breakpoints */
+    gap: clamp(1.2rem, 3vw, 2rem);
+    width: 100%;
+    max-width: var(--max-content);
 }
 
 .projectCard {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
     border: 2px solid black;
-    border-radius: 3rem;
-    padding: 3rem 2rem;
-    gap: 1.5rem;
+    border-radius: var(--radius-card);
+    padding: 1.5rem 1rem;
+    gap: 1.2rem;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
+    transition: var(--transition-med);
 }
 
 .projectCard:hover {
-    background-color: black;
+    background-color: var(--color-dark);
     color: white;
-    transform: translateY(-5px) scale(1.02);
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 .projectCard img {
-    width: 20vw;
-    border-radius: 1rem;
+    width: 90%;
+    border-radius: 0.75rem;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.projectCard h3 {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+.projectCard p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.55;
 }
 
 .projectCard:hover .button {
-    border: 2px solid white;
+    border-color: white;
+    color: white;
+}
+
+.projectCard:hover .button a {
+    color: white;
 }
 
 .projectCard:hover .button:hover {
@@ -260,68 +418,199 @@ section {
     color: black;
 }
 
-.projectCard h3 {
-    font-size: 1.5rem;
+.projectCard:hover .button:hover a {
+    color: black;
 }
 
+
+/* CONTACT SECTION */
 .contact {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
-    margin: 15rem 0;
     gap: 2rem;
-}
-
-.contact input {
-    position: relative;
-    border: 2px solid black;
-    border-radius: 3rem;
-    padding: 2rem 9rem;
-    font-size: 2rem;
 }
 
 .contact .input {
     position: relative;
+    width: min(100%, 520px); /* never wider than viewport, never wider than 520 px */
+}
+
+.contact input {
+    width: 100%;
+    border: 2px solid black;
+    border-radius: var(--radius-pill);
+    padding: clamp(0.75rem, 2vw, 1.4rem) clamp(1rem, 4vw, 2rem);
+    padding-left: 4rem; /* reserved space for the icon */
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-family: inherit;
+    outline: none;
+    transition: border-color var(--transition-fast);
+}
+
+.contact input::placeholder {
+    text-align: center;
+}
+
+.contact input:focus {
+    border-color: var(--accent-start);
+    box-shadow: 0 0 0 3px rgba(0,157,255,0.15);
 }
 
 .contact .input i {
     position: absolute;
-    font-size: 4rem;
+    left: 1rem;
     top: 50%;
-    left: 10px;
-    transform: translate(50%, -50%);
+    transform: translateY(-50%);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    pointer-events: none;  /* click passes through to input */
+    color: black;
+    opacity: 0.6;
 }
 
+
+/* FOOTER */
 footer {
-    bottom: 0;
-    left: 0;
-    height: 10rem;
     width: 100%;
+    padding: 2.5rem var(--section-pad-x);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
 footer ul {
     display: flex;
-    align-items: center;
-    gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1rem, 4vw, 3rem);
 }
 
 footer ul li a {
-    color: black;
     font-weight: 600;
+    font-size: 0.95rem;
+    color: black;
+    transition: opacity var(--transition-fast);
+}
+
+footer ul li a:hover {
+    opacity: 0.6;
 }
 
 .copyright {
-    font-size: 300;
-    margin-top: 2rem;
+    font-size: 0.78rem;
+    opacity: 0.55;
+    text-align: center;
 }
 
-@media (max-width: 1280px) {
-    
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Laptop & Tablet landscape (≤ 1024px)*/
+@media (max-width: 1024px) {
+    .header {
+        gap: clamp(0.8rem, 2vw, 2rem);
+        padding: 0.5rem 1.2rem;
+    }
+}
+
+/* Tablet portrait (≤ 768px) */
+@media (max-width: 768px) {
+    .header .visitButton {
+        display: none;
+    }
+
+    .experienceContainer {
+        flex-direction: column;
+    }
+
+    .experienceContainer img {
+        width: clamp(180px, 45vw, 300px);
+    }
+
+    .contact .input {
+        width: min(100%, 420px);
+    }
+}
+
+/* Mobile (≤ 640px) */
+@media (max-width: 640px) {
+    /* NAVBAR COLLAPSES TO MENU ICON */
+    .header {
+        width: auto;
+        max-width: calc(100vw - 2rem);
+        padding: 0.7rem 1.2rem;
+        gap: 1rem;
+        justify-content: space-between;
+    }
+
+    .header .navLinks {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        left: 0;
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        background-color: var(--color-dark);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius-card);
+        padding: 1rem 0;
+        min-width: 200px;
+    }
+
+    .header .navLinks.active {
+        display: flex;
+    }
+
+    .header .navLinks li {
+        width: 100%;
+        text-align: center;
+        padding: 0.65rem 1.5rem;
+    }
+
+    .header .navLinks li a::after {
+        display: none;
+    }
+
+    /* SHOW MENU ICON */
+    .header #menuIcon {
+        display: block;
+    }
+
+    .about .aboutContainer img {
+        width: clamp(140px, 55vw, 220px);
+    }
+
+    .experienceInfo {
+        grid-template-columns: 1fr;
+    }
+
+    .experienceContainer img {
+        width: clamp(160px, 55vw, 260px);
+    }
+
+    footer ul {
+        gap: 1.2rem;
+    }
+}
+
+/* Small mobile (≤ 400px) */
+@media (max-width: 400px) {
+    .about .aboutContainer {
+        gap: 1.5rem;
+    }
+
+    .about .aboutContainer img {
+        width: 55vw;
+    }
+
+    .buttonGroup {
+        flex-direction: column;
+        align-items: center;
+    }
 }
