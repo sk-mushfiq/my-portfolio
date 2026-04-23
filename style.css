@@ -36,17 +36,14 @@
 
 html {
     scroll-behavior: smooth;
-    /*font-size: 16px;*/     /* explicit root size for reliable rem calculations */
 }
 
 body {
     font-family: "Poppins", sans-serif;
-    /* color: var(--color-black); */
     overflow-x: hidden; /* prevent horizontal scroll from any off-canvas elements */
 }
 
 a {
-    /* color: inherit; */
     text-decoration: none;
 }
 
@@ -57,22 +54,15 @@ ul {
 img {
     display: block;
     max-width: 100%;
-    height: auto;      /* preserve aspect ratio always */
+    height: auto;
 }
 
 
 /* UTILITIES */
 
-/* Centred max-width wrapper reused in every section */
-/* .container {
-    width: 100%;
-    max-width: var(--max-content);
-    margin-inline: auto;
-} */
-
 .buttonGroup {
     display: flex;
-    flex-wrap: wrap;   /* buttons wrap instead of overflow on narrow screens */
+    flex-wrap: wrap; 
     gap: 1rem;
     justify-content: center;
 }
@@ -82,7 +72,7 @@ img {
     padding: 0.5rem 1rem;
     border: 2px solid black;
     cursor: pointer;
-    white-space: nowrap;        /* correct property — text-wrap: nowrap is non-standard */
+    white-space: nowrap;
     transition: var(--transition-fast);
     font-size: 0.9rem;
     display: inline-flex;
@@ -104,21 +94,11 @@ img {
 
 .sectionTitle {
     text-align: center;
-    /* clamp(min, preferred, max) — fluid font size that never hits extremes */
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(2rem, 5vw, 4rem); /* clamp(min, preferred, max) — fluid font size that never hits extremes */
     font-weight: 700;
     margin-bottom: clamp(2rem, 4vw, 3rem);
     letter-spacing: -0.02em;
 }
-
-/* Generic gradient text helper */
-/* .grad-text {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-} */
-
 
 /* HEADER & NAVIGATION */
 .header {
@@ -131,7 +111,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(1rem, 3vw, 4rem); /* gap shrinks fluidly; never forced-overflow */
+    gap: clamp(1rem, 3vw, 4rem);
 
     background-color: var(--color-dark);
     backdrop-filter: blur(10px);
@@ -140,7 +120,6 @@ img {
     padding: 0.55rem 1.5rem;
     border-radius: var(--radius-pill);
 
-    /* Prevent the pill from ever touching the screen edges */
     max-width: calc(100vw - 2rem);
     width: max-content;
 }
@@ -201,13 +180,11 @@ img {
 .header .visitButton {
     padding: 0.5rem 1.1rem;
     border-radius: var(--radius-pill);
-    /* border: none; */
     font-size: clamp(0.85rem, 1vw, 0.88rem);;
-    /* font-family: inherit; */
     color: white;
     cursor: pointer;
     white-space: nowrap;
-    /* flex-shrink: 0; */
+    flex-shrink: 0;
     transition: var(--transition-med);
     background: var(--gradient);
 }
@@ -220,7 +197,7 @@ img {
 
 /* SECTIONS */
 section {
-    min-height: 100svh; /* svh = small viewport height — accounts for mobile browser chrome */
+    min-height: 100svh;
     padding: var(--section-pad-y) var(--section-pad-x);
     width: 100%;
     position: relative;
@@ -237,7 +214,7 @@ section {
     align-items: center;
     justify-content: center;
     gap: clamp(2rem, 6vw, 6rem);
-    flex-wrap: wrap; /* auto-wraps to column on narrow viewports without a breakpoint hack */
+    flex-wrap: wrap;
     max-width: var(--max-content);
     width: 100%;
 }
@@ -382,15 +359,10 @@ section {
 
 
 /* PROJECTS SECTION */
-/* .projects {
-    display: flex;
-    justify-content: flex-start;
-} */
 
 .projectInfo {
     display: grid;
-    /* auto-fit with fluid min makes this responsive with zero breakpoints */
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); /* auto-fit with fluid min makes responsive without breakpoints */
     gap: clamp(1.2rem, 3vw, 2rem);
     width: 100%;
     max-width: var(--max-content);
@@ -473,13 +445,16 @@ section {
     width: 100%;
     border: 2px solid black;
     border-radius: var(--radius-pill);
-    /* fluid padding — shrinks on small screens, never overflows */
     padding: clamp(0.75rem, 2vw, 1.4rem) clamp(1rem, 4vw, 2rem);
-    padding-left: 4rem;  /* reserved space for the icon */
+    padding-left: 4rem; /* reserved space for the icon */
     font-size: clamp(0.9rem, 2vw, 1.2rem);
     font-family: inherit;
     outline: none;
     transition: border-color var(--transition-fast);
+}
+
+.contact input::placeholder {
+    text-align: center;
 }
 
 .contact input:focus {
@@ -499,9 +474,7 @@ section {
 }
 
 
-/* =============================================
-   10. FOOTER
-   ============================================= */
+/* FOOTER */
 footer {
     width: 100%;
     padding: 2.5rem var(--section-pad-x);
@@ -513,7 +486,7 @@ footer {
 
 footer ul {
     display: flex;
-    flex-wrap: wrap;       /* links wrap to next line rather than overflowing */
+    flex-wrap: wrap;
     justify-content: center;
     gap: clamp(1rem, 4vw, 3rem);
 }
@@ -548,12 +521,10 @@ footer ul li a:hover {
 
 /* Tablet portrait (≤ 768px) */
 @media (max-width: 768px) {
-    /* Hide GitHub button; keep nav visible — there's room */
     .header .visitButton {
         display: none;
     }
 
-    /* Stack experience side-image below cards */
     .experienceContainer {
         flex-direction: column;
     }
@@ -567,7 +538,7 @@ footer ul li a:hover {
     }
 }
 
-/* ── Mobile (≤ 640px) ── */
+/* Mobile (≤ 640px) */
 @media (max-width: 640px) {
     /* NAVBAR COLLAPSES TO MENU ICON */
     .header {
@@ -626,7 +597,6 @@ footer ul li a:hover {
         width: clamp(160px, 55vw, 260px);
     }
 
-    /* Footer links tighter */
     footer ul {
         gap: 1.2rem;
     }
