@@ -9,8 +9,6 @@
     --gradient-rev: linear-gradient(to right, var(--accent-end), var(--accent-start));
 
     --color-dark: rgba(0, 0, 0, 0.82);
-    --color-black: black;
-    --color-white: white;
 
     /* Fluid section padding — scales between 480 px and 1280 px viewports */
     --section-pad-x:  clamp(1.25rem, 5vw, 5rem);
@@ -82,7 +80,7 @@ img {
 .button {
     border-radius: var(--radius-pill);
     padding: 0.5rem 1rem;
-    border: 2px solid var(--color-black);
+    border: 2px solid black;
     cursor: pointer;
     white-space: nowrap;        /* correct property — text-wrap: nowrap is non-standard */
     transition: var(--transition-fast);
@@ -92,16 +90,16 @@ img {
 }
 
 .button a {
-    color: var(--color-black);
+    color: black;
 }
 
 .button:hover {
     background-color: var(--color-dark);
-    color: var(--color-white);
+    color: white;
 }
 
 .button:hover a {
-    color: var(--color-white);
+    color: white;
 }
 
 .sectionTitle {
@@ -138,7 +136,7 @@ img {
     background-color: var(--color-dark);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    color: var(--color-white);
+    color: white;
     padding: 0.55rem 1.5rem;
     border-radius: var(--radius-pill);
 
@@ -149,7 +147,7 @@ img {
 
 /* LOGO */
 .header .logo {
-    color: var(--color-white);
+    color: white;
     font-size: clamp(0.85rem, 1.5vw, 1.25rem);
     font-weight: 700;
     white-space: nowrap;
@@ -170,7 +168,7 @@ img {
 
 .header .navLinks li a {
     position: relative;
-    color: var(--color-white);
+    color: white;
     font-size: clamp(0.8rem, 1vw, 0.95rem);
     padding-bottom: 4px;
 }
@@ -206,7 +204,7 @@ img {
     /* border: none; */
     font-size: clamp(0.85rem, 1vw, 0.88rem);;
     /* font-family: inherit; */
-    color: var(--color-white);
+    color: white;
     cursor: pointer;
     white-space: nowrap;
     /* flex-shrink: 0; */
@@ -245,11 +243,11 @@ section {
 }
 
 /* PROFILE PHOTO */
-.about .aboutContainer > img {
+.about .aboutContainer img {
     width: clamp(160px, 28vw, 380px);
     border-radius: 50%;
     object-fit: cover;
-    aspect-ratio: 1 / 1; /* always a perfect circle regardless of image dims */
+    aspect-ratio: 1 / 1;
     flex-shrink: 0;
 }
 
@@ -262,7 +260,6 @@ section {
     text-align: center;
     white-space: nowrap;
     gap: 1.25rem;
-    /* flex-basis lets this column grow but never forces a specific width */
     flex: 1 1 280px;
     max-width: clamp(200px, 40vw, 550px);;
 }
@@ -278,42 +275,28 @@ section {
     letter-spacing: -0.02em;
 }
 
-/* .aboutInfo .role {
+.aboutInfo span {
     background: var(--gradient-rev);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     font-size: clamp(1.1rem, 2.5vw, 1.8rem);
-    font-weight: 600;
-} */
+}
 
 .aboutInfo .downloadButton {
     display: inline-block;
-    /* padding: 0.55rem 1.4rem;
-    border-radius: var(--radius-pill);
-    border: 2px solid var(--color-black);
-    color: var(--color-black);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: var(--transition-fast); */
     white-space: nowrap;
 }
-
-/* .aboutInfo .downloadButton:hover {
-    background-color: var(--color-dark);
-    color: var(--color-white);
-} */
 
 .aboutInfo .socials {
     display: flex;
     gap: 1.5rem;
-    /* margin-top: 0.25rem; */
+    margin-top: 0.25rem;
 }
 
 .aboutInfo .socials a {
-    color: var(--color-black);
+    color: black;
     font-size: clamp(1.8rem, 3vw, 2.5rem);
-    /* line-height: 1; */
     transition: transform var(--transition-fast);
     display: inline-flex;
 }
@@ -348,11 +331,11 @@ section {
 
 .experienceCard {
     padding: 1.5rem;
-    border: 2px solid var(--color-black);
+    border: 2px solid black;
     border-radius: var(--radius-card);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;   /* valid flex value (flex-start, not "left") */
+    align-items: flex-start;
     justify-content: flex-start;
     cursor: pointer;
     transition: var(--transition-fast);
@@ -386,11 +369,11 @@ section {
 .experienceCard:hover {
     transform: scale(1.02);
     background-color: var(--color-dark);
-    color: var(--color-white);
+    color: white;
 }
 
 /* SIDE IMAGE */
-.experienceContainer > img {
+.experienceContainer img {
     width: clamp(160px, 22vw, 320px);
     border-radius: var(--radius-card);
     object-fit: cover;
@@ -418,7 +401,7 @@ section {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 2px solid var(--color-black);
+    border: 2px solid black;
     border-radius: var(--radius-card);
     padding: 1.5rem 1rem;
     gap: 1.2rem;
@@ -428,7 +411,7 @@ section {
 
 .projectCard:hover {
     background-color: var(--color-dark);
-    color: var(--color-white);
+    color: white;
     transform: translateY(-6px) scale(1.015);
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
@@ -453,21 +436,21 @@ section {
 }
 
 .projectCard:hover .button {
-    border-color: var(--color-white);
-    color: var(--color-white);
+    border-color: white;
+    color: white;
 }
 
 .projectCard:hover .button a {
-    color: var(--color-white);
+    color: white;
 }
 
 .projectCard:hover .button:hover {
-    background-color: var(--color-white);
-    color: var(--color-black);
+    background-color: white;
+    color: black;
 }
 
 .projectCard:hover .button:hover a {
-    color: var(--color-black);
+    color: black;
 }
 
 
@@ -477,7 +460,7 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* text-align: center; */
+    text-align: center;
     gap: 2rem;
 }
 
@@ -488,7 +471,7 @@ section {
 
 .contact input {
     width: 100%;
-    border: 2px solid var(--color-black);
+    border: 2px solid black;
     border-radius: var(--radius-pill);
     /* fluid padding — shrinks on small screens, never overflows */
     padding: clamp(0.75rem, 2vw, 1.4rem) clamp(1rem, 4vw, 2rem);
@@ -511,7 +494,7 @@ section {
     transform: translateY(-50%);
     font-size: clamp(1.2rem, 3vw, 1.8rem);
     pointer-events: none;  /* click passes through to input */
-    color: var(--color-black);
+    color: black;
     opacity: 0.6;
 }
 
@@ -538,7 +521,7 @@ footer ul {
 footer ul li a {
     font-weight: 600;
     font-size: 0.95rem;
-    color: var(--color-black);
+    color: black;
     transition: opacity var(--transition-fast);
 }
 
@@ -555,7 +538,7 @@ footer ul li a:hover {
 
 /* RESPONSIVE BREAKPOINTS */
 
-/* Tablet landscape(≤ 1024px)*/
+/* Laptop & Tablet landscape (≤ 1024px)*/
 @media (max-width: 1024px) {
     .header {
         gap: clamp(0.8rem, 2vw, 2rem);
@@ -575,7 +558,7 @@ footer ul li a:hover {
         flex-direction: column;
     }
 
-    .experienceContainer > img {
+    .experienceContainer img {
         width: clamp(180px, 45vw, 300px);
     }
 
@@ -631,7 +614,7 @@ footer ul li a:hover {
         display: block;
     }
 
-    .about .aboutContainer > img {
+    .about .aboutContainer img {
         width: clamp(140px, 55vw, 220px);
     }
 
@@ -639,7 +622,7 @@ footer ul li a:hover {
         grid-template-columns: 1fr;
     }
 
-    .experienceContainer > img {
+    .experienceContainer img {
         width: clamp(160px, 55vw, 260px);
     }
 
@@ -655,7 +638,7 @@ footer ul li a:hover {
         gap: 1.5rem;
     }
 
-    .about .aboutContainer > img {
+    .about .aboutContainer img {
         width: 55vw;
     }
 
