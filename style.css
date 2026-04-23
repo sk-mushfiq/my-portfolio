@@ -15,7 +15,7 @@
     --section-pad-y:  clamp(5rem,   8vw, 8rem);
 
     /* Max content width — prevents text lines from becoming unreadably long */
-    --max-content: 1200px;
+    --max-content: 1440px;
 
     --radius-pill: 10rem;
     --radius-card: 2rem;
@@ -98,6 +98,7 @@ img {
     margin-bottom: clamp(2rem, 4vw, 3rem);
     letter-spacing: -0.02em;
 }
+
 
 /* HEADER & NAVIGATION */
 .header {
@@ -571,10 +572,6 @@ footer ul li a:hover {
         width: 100%;
         text-align: center;
         padding: 0.65rem 1.5rem;
-    }
-
-    .header .navLinks li a::after {
-        display: none;
     }
 
     /* SHOW MENU ICON */
