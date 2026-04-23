@@ -59,7 +59,6 @@ img {
 
 
 /* UTILITIES */
-
 .buttonGroup {
     display: flex;
     flex-wrap: wrap; 
@@ -349,7 +348,6 @@ section {
     color: white;
 }
 
-/* SIDE IMAGE */
 .experienceContainer img {
     width: clamp(160px, 22vw, 320px);
     border-radius: var(--radius-card);
@@ -359,7 +357,6 @@ section {
 
 
 /* PROJECTS SECTION */
-
 .projectInfo {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); /* auto-fit with fluid min makes responsive without breakpoints */
